@@ -7,7 +7,7 @@ export default function Login() {
 
     const onSubmit = (data: any) => {
 		if (data.usuario !== 'admin' || data.password !== 'admin') {
-			alert('Usuario o contraseña incorrectos');
+			alert('Usuario o password incorrectos');
 			return;
 		}
 

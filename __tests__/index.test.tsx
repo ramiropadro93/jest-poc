@@ -3,19 +3,16 @@ import { useRouter } from 'next/navigation';
 import Home from '../pages/index';
 import '@testing-library/jest-dom';
 
-// Definir el tipo para el mock
 const mockRouter = {
   push: jest.fn(),
 };
 
-// Mock usando jest.mock con el tipo correcto
 jest.mock('next/navigation', () => ({
   useRouter: () => mockRouter
 }));
 
-describe('Home Component', () => {
+describe('Home component', () => {
   beforeEach(() => {
-    // Limpiar el mock antes de cada test
     mockRouter.push.mockClear();
   });
 
@@ -27,7 +24,7 @@ describe('Home Component', () => {
     expect(screen.getByText('Login')).toBeInTheDocument();
   });
 
-  it('navega a /register cuando se hace clic en el botón Registrar', () => {
+  it('Navega a /register cuando se hace clic en el botón Registrar', () => {
     render(<Home />);
     
     const registerButton = screen.getByText('Registrar');
@@ -36,7 +33,7 @@ describe('Home Component', () => {
     expect(mockRouter.push).toHaveBeenCalledWith('/register');
   });
 
-  it('navega a /login cuando se hace clic en el botón Login', () => {
+  it('Navega a /login cuando se hace clic en el botón Login', () => {
     render(<Home />);
     
     const loginButton = screen.getByText('Login');

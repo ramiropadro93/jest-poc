@@ -11,26 +11,24 @@ const mockRouter = {
 	useRouter: () => mockRouter
   }));
   
-describe('Login Component', () => {
+describe('Login component', () => {
     beforeEach(() => {
         mockRouter.push.mockClear();
     });
 
-    it('renderiza el formulario de login correctamente', () => {
+    it('Renderiza el formulario de login correctamente', () => {
         render(<Login />);
 
         expect(screen.getByPlaceholderText('Usuario')).toBeInTheDocument();
         expect(screen.getByPlaceholderText('Password')).toBeInTheDocument();
     });
 
-    it('navega a /game cuando las credenciales son correctas', async () => {
+    it('Navega a /game cuando las credenciales son correctas', async () => {
         render(<Login />);
 
-        // Ingresar credenciales correctas
         await userEvent.type(screen.getByPlaceholderText('Usuario'), 'admin');
         await userEvent.type(screen.getByPlaceholderText('Password'), 'admin');
 
-        // Enviar el formulario
         const submitButton = screen.getByText('Ingresar');
         fireEvent.click(submitButton);
 
@@ -39,13 +37,12 @@ describe('Login Component', () => {
         });
     });
 
-    it('permite ingresar datos en los campos', async () => {
+    it('Permite ingresar datos en los campos', async () => {
         render(<Login />);
 
         const usuarioInput = screen.getByPlaceholderText('Usuario');
         const passwordInput = screen.getByPlaceholderText('Password');
 
-        // Verificar que se pueden ingresar datos
         await userEvent.type(usuarioInput, 'test');
         await userEvent.type(passwordInput, 'password');
 
